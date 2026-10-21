@@ -1,0 +1,147 @@
+{
+ "CVE-2022-49341": {
+  "reach": "cap_bpf",
+  "effect": "info-leak",
+  "reach_note": "manual: reached via bpf(BPF_OBJ_GET_INFO_BY_FD) on a prog fd"
+ },
+ "CVE-2024-35903": {
+  "reach": "deployed",
+  "reach_note": "manual: x86 helper-CALL emission shared with cBPF (LD_ABS slow path), but only when call-depth tracking (retbleed=stuff, non-default) is active"
+ },
+ "CVE-2024-42067": {
+  "effect": "hardening",
+  "reach_note": "manual: W^X failure path shared with cBPF JIT"
+ },
+ "CVE-2024-42068": {
+  "effect": "hardening"
+ },
+ "CVE-2026-64508": {
+  "reach": "unpriv",
+  "effect": "hardening",
+  "reach_note": "manual: JIT-spraying hardening; cBPF is the unprivileged spraying surface"
+ },
+ "CVE-2026-53036": {
+  "reach": "cap_bpf",
+  "reach_note": "manual: needs branch displacement near +-1MB; cBPF is capped at 4096 insns"
+ },
+ "CVE-2026-93147": {
+  "reach": "cap_bpf",
+  "reach_note": "manual: inlined bpf_get_smp_processor_id, eBPF only"
+ },
+ "CVE-2021-47426": {
+  "reach": "unpriv?",
+  "reach_note": "manual: s390 JIT error path, shared with cBPF"
+ },
+ "CVE-2022-50661": {
+  "effect": "minor(leak)"
+ },
+ "CVE-2025-21834": {
+  "effect": "other/functional",
+  "reach_note": "manual: seccomp policy change for uretprobe syscall (crash of traced process), not a cBPF memory bug"
+ },
+ "CVE-2025-37948": {
+  "effect": "info-leak",
+  "reach_note": "manual: Spectre-BHB from unprivileged cBPF (seccomp) on arm64"
+ },
+ "CVE-2025-37963": {
+  "effect": "hardening",
+  "reach_note": "manual: narrows 37948 mitigation to unprivileged cBPF (perf fix)"
+ },
+ "CVE-2026-45932": {
+  "reach": "unpriv",
+  "effect": "security-policy",
+  "reach_note": "manual: BPF_PROG_DETACH is not gated by unprivileged_bpf_disabled; any local user could detach tcx/netkit programs (e.g. CNI/firewall) without a prog fd"
+ },
+ "CVE-2026-74363": {
+  "reach": "unpriv_userns",
+  "reach_note": "manual: bpffs is FS_USERNS_MOUNT (6.9+); unlink vs RCU path walk UAF needs no CAP_BPF"
+ },
+ "CVE-2024-50165": {
+  "reach": "unpriv_userns",
+  "reach_note": "manual: bpffs mount-option leak, mountable in a userns (6.9+)",
+  "effect": "minor(leak)"
+ },
+ "CVE-2026-90099": {
+  "reach": "unpriv_userns",
+  "effect": "other/functional",
+  "reach_note": "manual: cls_bpf/tc filters creatable with CAP_NET_ADMIN in a userns; memcg accounting only"
+ },
+ "CVE-2026-72110": {
+  "reach": "deployed",
+  "reach_note": "manual: fork failure path; only matters if task storage is in use"
+ },
+ "CVE-2026-68399": {
+  "reach": "deployed",
+  "reach_note": "manual: sk clone on inbound connection; only matters if sk_storage is in use"
+ },
+ "CVE-2025-21670": {
+  "reach": "deployed"
+ },
+ "CVE-2021-47128": {
+  "reach": "cap_bpf",
+  "effect": "security-policy",
+  "reach_note": "manual: lockdown/SELinux check for tracing helpers; requires loader"
+ },
+ "CVE-2024-26611": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2024-39293": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2026-74558": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2026-74707": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2026-90086": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2026-90115": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2026-74708": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root"
+ },
+ "CVE-2022-49972": {
+  "reach": "deployed",
+  "effect": "other/functional",
+  "reach_note": "manual: AF_XDP zero-copy/RX path needs a ZC NIC or an XDP redirect program set up by root; packet corruption, not memory corruption"
+ },
+ "CVE-2024-56614": {
+  "reach": "cap_bpf",
+  "reach_note": "manual: xskmap is created/deleted via bpf(), needs CAP_BPF"
+ },
+ "CVE-2025-37959": {
+  "effect": "security-policy",
+  "reach_note": "manual: bpf_redirect_peer leaks conntrack/NAT/XFRM state across netns; remote traffic on CNI nodes (CNA AV:N 9.4)"
+ },
+ "CVE-2024-35834": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP RX path needs an XDP redirect program set up by root"
+ },
+ "CVE-2025-37920": {
+  "reach": "deployed",
+  "reach_note": "manual: AF_XDP generic RX path needs an XDP redirect program set up by root"
+ },
+ "CVE-2024-41010": {
+  "reach": "unpriv_userns",
+  "effect": "memory-corruption",
+  "reach_note": "manual: tcx_entry backs every ingress/clsact qdisc (6.6+); replacing a shared-block qdisc needs only CAP_NET_ADMIN in a userns, no BPF program"
+ },
+ "CVE-2025-38502": {
+  "reach": "cap_bpf",
+  "reach_note": "manual: needs attacker-crafted tail-call programs"
+ },
+ "CVE-2026-53078": {
+  "reach": "cap_bpf",
+  "reach_note": "manual: ctx-rewrite bug triggered by how the loaded program is written"
+ }
+}
